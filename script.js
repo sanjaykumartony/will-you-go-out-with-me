@@ -263,33 +263,51 @@ foodCards.forEach(card=>{
 // Finish
 // ----------------------
 
-foodNext.onclick=()=>{
+foodNext.onclick = async () => {
 
-    if(selectedFood===""){
-
+    if (selectedFood === "") {
         alert("Pick something to eat 😄");
-
         return;
+    }
+
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    summaryDate.innerText = date;
+    summaryTime.innerText = time;
+    summaryPlace.innerText = selectedPlace;
+    summaryFood.innerText = selectedFood;
+
+    try {
+
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbzqW0kJwSTBNmNFHzLNSHoRldp7A7tz2fej4nLbLYVzesg0T8Q0wXeAXhwXWjve9N6tNw/exec",
+            {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify({
+                    date,
+                    time,
+                    place: selectedPlace,
+                    food: selectedFood
+                })
+            }
+        );
+
+        console.log("Response saved.");
+
+    } catch (err) {
+
+        console.error(err);
 
     }
 
-    summaryDate.innerText =
-        document.getElementById("date").value;
-
-    summaryTime.innerText =
-        document.getElementById("time").value;
-
-    summaryPlace.innerText =
-        selectedPlace;
-
-    summaryFood.innerText =
-        selectedFood;
-
     confetti({
-
-        particleCount:350,
-        spread:140
-
+        particleCount: 350,
+        spread: 140
     });
 
     showScreen(finalScreen);

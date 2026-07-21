@@ -263,7 +263,7 @@ foodCards.forEach(card=>{
 // Finish
 // ----------------------
 
-foodNext.onclick = async () => {
+foodNext.onclick = () => {
 
     if (selectedFood === "") {
         alert("Pick something to eat 😄");
@@ -278,38 +278,30 @@ foodNext.onclick = async () => {
     summaryPlace.innerText = selectedPlace;
     summaryFood.innerText = selectedFood;
 
-    try {
-
-        await fetch(
-            "https://script.google.com/macros/s/AKfycbzqW0kJwSTBNmNFHzLNSHoRldp7A7tz2fej4nLbLYVzesg0T8Q0wXeAXhwXWjve9N6tNw/exec",
-            {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
-                },
-                body: JSON.stringify({
-                    date,
-                    time,
-                    place: selectedPlace,
-                    food: selectedFood
-                })
-            }
-        );
-
-        console.log("Response saved.");
-
-    } catch (err) {
-
-        console.error(err);
-
-    }
-
+    // 🎉 Show the result immediately
     confetti({
         particleCount: 350,
         spread: 140
     });
 
     showScreen(finalScreen);
+
+    // 📤 Send data to Google Sheets in the background
+    fetch(
+        "https://script.google.com/macros/s/AKfycbzqW0kJwSTBNmNFHzLNSHoRldp7A7tz2fej4nLbLYVzesg0T8Q0wXeAXhwXWjve9N6tNw/exec",
+        {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify({
+                date,
+                time,
+                place: selectedPlace,
+                food: selectedFood
+            })
+        }
+    ).catch(console.error);
 
 };

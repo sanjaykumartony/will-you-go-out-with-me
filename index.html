@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>❤️ Will You Go Out With Me?</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Background -->
+<div class="background"></div>
+
+<!-- Floating Hearts -->
+<div id="hearts"></div>
+
+<!-- ================= INTRO ================= -->
+
+<section id="intro" class="screen active">
+
+    <div class="card">
+
+        <h1>❤️</h1>
+
+        <h2>Hey!</h2>
+
+        <p>I made something for you...</p>
+
+        <button id="startBtn">
+            Tap to Continue
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================= QUESTION ================= -->
+
+<section id="question" class="screen">
+
+    <div class="card">
+
+        <h1>🌸</h1>
+
+        <h2>Will you go on a date with me?</h2>
+
+        <div class="button-group">
+
+            <button id="yesBtn" class="yes">
+                Yes 💚
+            </button>
+
+            <button id="noBtn" class="no">
+                No ❤️
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= DATE DETAILS ================= -->
+
+<section id="details" class="screen">
+
+    <div class="card">
+
+        <h2>I knew you would say yes ❤️</h2>
+
+        <p>So... when are you free?</p>
+
+        <label>Date</label>
+        <input type="date" id="date">
+
+        <label>Time</label>
+        <input type="time" id="time">
+
+        <label>Place</label>
+
+        <select id="place">
+
+            <option value="">Choose...</option>
+
+            <option>Keshav Puram</option>
+
+            <option>Majnu Ka Tila (MKT)</option>
+
+            <option>Connaught Place (CP)</option>
+
+            <option>Anywhere in Delhi</option>
+
+            <option>Anywhere in Gurgaon</option>
+
+        </select>
+
+        <button id="nextBtn">
+            Set the Date ❤️
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOD ================= -->
+
+<section id="food" class="screen">
+
+    <div class="card">
+
+        <h2>What are we feeling?</h2>
+
+        <div class="food-grid">
+
+            <div class="food" data-food="Pizza">🍕<span>Pizza</span></div>
+
+            <div class="food" data-food="Pasta">🍝<span>Pasta</span></div>
+
+            <div class="food" data-food="Dosa">🥞<span>Dosa</span></div>
+
+            <div class="food" data-food="Sushi">🍣<span>Sushi</span></div>
+
+            <div class="food" data-food="Tacos">🌮<span>Tacos</span></div>
+
+            <div class="food" data-food="Ramen">🍜<span>Ramen</span></div>
+
+            <div class="food" data-food="Coffee">☕<span>Coffee</span></div>
+
+            <div class="food" data-food="Biryani">🍛<span>Biryani</span></div>
+
+        </div>
+
+        <button id="foodBtn">
+
+            Pick This ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================= FINAL ================= -->
+
+<section id="final" class="screen">
+
+    <div class="card">
+
+        <div id="meme">
+
+            🎉🥳🎉
+
+        </div>
+
+        <h2>Glad you didn't say no ❤️</h2>
+
+        <p id="summary"></p>
+
+    </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

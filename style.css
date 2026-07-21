@@ -109,7 +109,7 @@ body{
 
 .screen.active{
     display:flex;
-    animation:fade .45s ease;
+    animation:fade .2s ease-out;
 }
 
 @keyframes fade{

@@ -143,21 +143,17 @@ noBtn.onclick = ()=>{
 // YES BUTTON
 // ----------------------
 
-yesBtn.onclick = ()=>{
+yesBtn.onclick = () => {
 
     confetti({
-
-        particleCount:220,
-        spread:90,
-        origin:{y:.6}
-
+        particleCount: 220,
+        spread: 90,
+        origin: { y: 0.6 }
     });
 
-    setTimeout(()=>{
-
+    setTimeout(() => {
         showScreen(planner);
-
-    },900);
+    }, 200);
 
 };
 

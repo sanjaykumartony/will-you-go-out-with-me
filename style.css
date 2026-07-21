@@ -6,374 +6,650 @@
     box-sizing:border-box;
 }
 
-body{
-
-    font-family:'Poppins',sans-serif;
-
-    min-height:100vh;
-
+html,body{
+    width:100%;
+    height:100%;
     overflow:hidden;
-
-    background:linear-gradient(-45deg,
-    #ff9ecb,
-    #ffc6e5,
-    #d8b4ff,
-    #ffd6f5);
-
-    background-size:400% 400%;
-
-    animation:gradientMove 12s ease infinite;
-
+    font-family:'Poppins',sans-serif;
 }
 
-
-/* ---------- ANIMATED BACKGROUND ---------- */
-
-@keyframes gradientMove{
-
-0%{
-background-position:0% 50%;
+body{
+    color:white;
 }
 
-50%{
-background-position:100% 50%;
-}
-
-100%{
-background-position:0% 50%;
-}
-
-}
+/* ---------- BACKGROUND ---------- */
 
 .background{
-
-position:fixed;
-inset:0;
-z-index:-2;
-
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    background:linear-gradient(
+        135deg,
+        #5B7FFF,
+        #7C4DFF,
+        #A855F7
+    );
+    background-size:300% 300%;
+    animation:bgMove 12s ease infinite;
+    z-index:-5;
 }
 
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* ---------- BLOBS ---------- */
+
+.blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.35;
+}
+
+.blob1{
+    width:350px;
+    height:350px;
+    background:#ffffff;
+    top:-80px;
+    left:-60px;
+    animation:float1 14s infinite alternate;
+}
+
+.blob2{
+    width:300px;
+    height:300px;
+    background:#8EC5FC;
+    bottom:-100px;
+    right:-60px;
+    animation:float2 16s infinite alternate;
+}
+
+.blob3{
+    width:250px;
+    height:250px;
+    background:#FFD6F7;
+    top:45%;
+    left:60%;
+    animation:float3 18s infinite alternate;
+}
+
+@keyframes float1{
+    to{
+        transform:translate(80px,120px);
+    }
+}
+
+@keyframes float2{
+    to{
+        transform:translate(-120px,-80px);
+    }
+}
+
+@keyframes float3{
+    to{
+        transform:translate(-140px,100px);
+    }
+}
 
 /* ---------- SCREENS ---------- */
 
 .screen{
+    position:absolute;
+    inset:0;
 
-position:absolute;
+    display:none;
+    justify-content:center;
+    align-items:center;
 
-width:100%;
-height:100%;
-
-display:none;
-
-justify-content:center;
-align-items:center;
-
-padding:25px;
-
+    padding:25px;
 }
 
 .screen.active{
-
-display:flex;
-
-animation:fade .5s ease;
-
+    display:flex;
+    animation:fade .45s ease;
 }
-
 
 @keyframes fade{
-
-from{
-
-opacity:0;
-transform:translateY(20px);
-
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
 }
-
-to{
-
-opacity:1;
-transform:translateY(0);
-
-}
-
-}
-
 
 /* ---------- CARD ---------- */
 
 .card{
 
-width:100%;
+    width:min(95%,430px);
 
-max-width:420px;
+    background:rgba(255,255,255,.15);
 
-padding:30px;
+    backdrop-filter:blur(18px);
 
-border-radius:28px;
+    border:1px solid rgba(255,255,255,.25);
 
-background:rgba(255,255,255,.25);
+    border-radius:30px;
 
-backdrop-filter:blur(18px);
+    padding:34px 28px;
 
--webkit-backdrop-filter:blur(18px);
+    text-align:center;
 
-box-shadow:
-
-0 20px 60px rgba(0,0,0,.18);
-
-text-align:center;
-
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.20);
 }
 
-
-/* ---------- TEXT ---------- */
+/* ---------- TYPOGRAPHY ---------- */
 
 h1{
-
-font-size:52px;
-margin-bottom:10px;
-
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:18px;
 }
 
 h2{
-
-font-size:30px;
-
-color:#222;
-
-margin-bottom:15px;
-
+    margin-bottom:20px;
 }
 
-p{
-
-font-size:17px;
-
-color:#444;
-
-margin-bottom:25px;
-
-line-height:1.6;
-
+.subtitle{
+    font-size:1.1rem;
+    opacity:.95;
 }
 
+.smallText{
+    font-size:1rem;
+    margin-bottom:30px;
+}
+
+.hint{
+
+    margin-top:30px;
+
+    opacity:.7;
+
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        opacity:.35;
+    }
+
+}
 
 /* ---------- BUTTONS ---------- */
 
 button{
 
-border:none;
+    cursor:pointer;
 
-cursor:pointer;
+    border:none;
 
-font-size:18px;
+    border-radius:18px;
 
-font-weight:600;
+    transition:.3s;
 
-padding:16px 28px;
-
-border-radius:16px;
-
-transition:.35s;
-
-font-family:'Poppins',sans-serif;
+    font-family:inherit;
 
 }
 
+.primaryBtn{
 
-.button-group{
+    width:100%;
 
-display:flex;
+    margin-top:25px;
 
-gap:15px;
+    background:white;
 
-justify-content:center;
+    color:#5B48FF;
 
-margin-top:20px;
+    font-weight:600;
 
-}
+    font-size:1rem;
 
-
-.yes{
-
-background:#27c96d;
-
-color:white;
+    padding:15px;
 
 }
 
+.primaryBtn:hover{
 
-.no{
-
-background:#ff4b5c;
-
-color:white;
+    transform:translateY(-3px);
 
 }
 
+/* ---------- YES / NO ---------- */
+
+.buttonGroup{
+
+    margin-top:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.yesButton{
+
+    background:#22C55E;
+
+    color:white;
+
+    padding:17px;
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+}
+
+.noButton{
+
+    background:#EF4444;
+
+    color:white;
+
+    padding:17px;
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+}
 
 button:hover{
 
-transform:translateY(-3px);
+    transform:scale(1.03);
 
 }
 
+/* ---------- MESSAGE ---------- */
 
-/* ---------- INPUTS ---------- */
+#message{
 
-label{
+    min-height:40px;
 
-display:block;
+    margin-top:25px;
 
-margin-top:18px;
+    font-weight:500;
 
-margin-bottom:8px;
-
-font-weight:600;
-
-text-align:left;
+    color:#FFF7C2;
 
 }
 
+/* ---------- LOADING ---------- */
 
-input,
-select{
+.progress{
 
-width:100%;
+    height:14px;
 
-padding:15px;
+    border-radius:100px;
 
-border-radius:14px;
+    overflow:hidden;
 
-border:none;
+    background:rgba(255,255,255,.25);
 
-font-size:16px;
-
-margin-bottom:5px;
-
-font-family:'Poppins',sans-serif;
+    margin:30px 0 15px;
 
 }
 
+#progressBar{
 
-/* ---------- FOOD ---------- */
+    width:0;
 
-.food-grid{
+    height:100%;
 
-display:grid;
+    border-radius:100px;
 
-grid-template-columns:repeat(2,1fr);
-
-gap:15px;
-
-margin:25px 0;
+    background:white;
 
 }
 
+/* ==========================================
+   PLANNER
+========================================== */
 
-.food{
+.plannerCard{
+    text-align:left;
+}
 
-background:white;
+.field{
+    margin-top:20px;
+}
 
-padding:18px;
+.field label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
 
-border-radius:18px;
+.field input{
+    width:100%;
+    padding:14px 16px;
+    border:none;
+    border-radius:14px;
+    outline:none;
+    font-size:16px;
+    background:rgba(255,255,255,.9);
+    color:#222;
+}
 
-cursor:pointer;
+.placeTitle{
+    display:block;
+    margin-top:28px;
+    margin-bottom:14px;
+    font-weight:600;
+}
 
-transition:.25s;
+.places{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+}
 
-font-size:34px;
+.placeCard{
 
-display:flex;
+    background:rgba(255,255,255,.12);
 
-flex-direction:column;
+    border:1px solid rgba(255,255,255,.25);
 
-align-items:center;
+    border-radius:16px;
 
-gap:8px;
+    padding:16px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.placeCard:hover{
+
+    transform:translateY(-3px);
+
+    background:rgba(255,255,255,.22);
 
 }
 
+.placeCard.selected{
 
-.food span{
+    background:white;
 
-font-size:14px;
+    color:#5B48FF;
 
-font-weight:600;
-
-}
-
-
-.food:hover{
-
-transform:translateY(-4px);
+    font-weight:600;
 
 }
 
+/* ==========================================
+   FOOD
+========================================== */
 
-.food.selected{
+.foodGrid{
 
-background:#27c96d;
+    margin-top:30px;
 
-color:white;
+    display:grid;
 
-transform:scale(1.06);
+    grid-template-columns:repeat(2,1fr);
 
-}
-
-
-/* ---------- FINAL ---------- */
-
-#meme{
-
-font-size:90px;
-
-margin-bottom:20px;
-
-animation:bounce 1s infinite;
+    gap:16px;
 
 }
 
+.foodCard{
 
-@keyframes bounce{
+    display:flex;
 
-50%{
+    flex-direction:column;
 
-transform:translateY(-10px);
+    justify-content:center;
 
-}
+    align-items:center;
 
-}
+    gap:10px;
 
+    min-height:120px;
 
-/* ---------- MOBILE ---------- */
+    background:rgba(255,255,255,.12);
 
-@media(max-width:430px){
+    border:1px solid rgba(255,255,255,.25);
 
-.card{
+    border-radius:22px;
 
-padding:24px;
+    cursor:pointer;
 
-}
+    transition:.25s;
 
-h2{
-
-font-size:25px;
-
-}
-
-button{
-
-width:100%;
+    font-size:2rem;
 
 }
 
-.button-group{
+.foodCard span{
 
-flex-direction:column;
+    font-size:.95rem;
+
+    font-weight:600;
 
 }
 
+.foodCard:hover{
+
+    transform:translateY(-5px);
+
+    background:rgba(255,255,255,.20);
+
+}
+
+.foodCard.selected{
+
+    background:white;
+
+    color:#5B48FF;
+
+    transform:scale(1.04);
+
+}
+
+/* ==========================================
+   FINAL
+========================================== */
+
+.finalCard{
+
+    animation:pop .5s ease;
+
+}
+
+@keyframes pop{
+
+    from{
+
+        transform:scale(.85);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.check{
+
+    width:72px;
+
+    height:72px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    background:#22C55E;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+}
+
+.summary{
+
+    margin-top:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    text-align:left;
+
+}
+
+.summary p{
+
+    background:rgba(255,255,255,.12);
+
+    padding:12px 16px;
+
+    border-radius:12px;
+
+}
+
+/* ==========================================
+   PHOTOS
+========================================== */
+
+.photos{
+
+    margin-top:35px;
+
+    display:flex;
+
+    justify-content:space-evenly;
+
+    gap:25px;
+
+}
+
+.person{
+
+    text-align:center;
+
+}
+
+.person img{
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid rgba(255,255,255,.85);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+}
+
+.person img:hover{
+
+    transform:scale(1.08);
+
+}
+
+.person p{
+
+    margin-top:12px;
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   ENDING
+========================================== */
+
+.ending{
+
+    margin-top:30px;
+
+    font-size:1.05rem;
+
+    opacity:.95;
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:480px){
+
+    .card{
+
+        padding:28px 22px;
+
+        border-radius:24px;
+
+    }
+
+    h1{
+
+        font-size:1.7rem;
+
+    }
+
+    .foodCard{
+
+        min-height:100px;
+
+        font-size:1.7rem;
+
+    }
+
+    .person img{
+
+        width:90px;
+        height:90px;
+
+    }
+
+}
+
+.finalMessage{
+    margin-top:35px;
+    padding:20px;
+    background:rgba(255,255,255,.12);
+    border-radius:18px;
+    text-align:center;
+    font-size:1.05rem;
+    line-height:1.6;
 }

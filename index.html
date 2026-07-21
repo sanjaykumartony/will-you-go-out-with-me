@@ -4,39 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>❤️ Will You Go Out With Me?</title>
+    <title>Open Invitation</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Background -->
-<div class="background"></div>
+<!-- Animated Background -->
+<div class="background">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+</div>
 
-<!-- Floating Hearts -->
-<div id="hearts"></div>
+<!-- ================= LOADING ================= -->
 
-<!-- ================= INTRO ================= -->
-
-<section id="intro" class="screen active">
+<section id="loading" class="screen active">
 
     <div class="card">
 
-        <h1>❤️</h1>
+        <h2>Loading something special...</h2>
 
-        <h2>Hey!</h2>
+        <div class="progress">
 
-        <p>I made something for you...</p>
+            <div id="progressBar"></div>
 
-        <button id="startBtn">
-            Tap to Continue
+        </div>
+
+        <p id="loadingPercent">0%</p>
+
+    </div>
+
+</section>
+
+<!-- ================= INVITATION ================= -->
+
+<section id="welcome" class="screen">
+
+    <div class="card">
+
+        <p class="smallText">
+            You've been invited to something...
+        </p>
+
+        <button id="openBtn" class="primaryBtn">
+
+            Open Invitation
+
         </button>
+
+    </div>
+
+</section>
+
+<!-- ================= INTRO ================= -->
+
+<section id="intro" class="screen">
+
+    <div class="card">
+
+        <h1>
+
+            Hey Bharti,
+
+        </h1>
+
+        <p class="subtitle">
+
+            I made something for you.
+
+        </p>
+
+        <p class="hint">
+
+            Tap anywhere to continue
+
+        </p>
 
     </div>
 
@@ -48,62 +97,120 @@
 
     <div class="card">
 
-        <h1>🌸</h1>
+        <h1>
 
-        <h2>Will you go on a date with me?</h2>
+            Will you go on a date with me?
 
-        <div class="button-group">
+        </h1>
 
-            <button id="yesBtn" class="yes">
-                Yes 💚
+        <div class="buttonGroup">
+
+            <button id="yesBtn" class="yesButton">
+
+                Yes
+
             </button>
 
-            <button id="noBtn" class="no">
-                No ❤️
+            <button id="noBtn" class="noButton">
+
+                No
+
             </button>
 
         </div>
+
+        <p id="message"></p>
 
     </div>
 
 </section>
 
-<!-- ================= DATE DETAILS ================= -->
+<!-- ================= PLANNER ================= -->
 
-<section id="details" class="screen">
+<section id="planner" class="screen">
 
-    <div class="card">
+    <div class="card plannerCard">
 
-        <h2>I knew you would say yes ❤️</h2>
+        <h1>
 
-        <p>So... when are you free?</p>
+            Let's plan it.
 
-        <label>Date</label>
-        <input type="date" id="date">
+        </h1>
 
-        <label>Time</label>
-        <input type="time" id="time">
+        <div class="field">
 
-        <label>Place</label>
+            <label>
 
-        <select id="place">
+                Date
 
-            <option value="">Choose...</option>
+            </label>
 
-            <option>Keshav Puram</option>
+            <input
+                id="date"
+                type="date">
 
-            <option>Majnu Ka Tila (MKT)</option>
+        </div>
 
-            <option>Connaught Place (CP)</option>
+        <div class="field">
 
-            <option>Anywhere in Delhi</option>
+            <label>
 
-            <option>Anywhere in Gurgaon</option>
+                Time
 
-        </select>
+            </label>
 
-        <button id="nextBtn">
-            Set the Date ❤️
+            <input
+                id="time"
+                type="time">
+
+        </div>
+
+        <label class="placeTitle">
+
+            Pick a place
+
+        </label>
+
+        <div class="places">
+
+            <div class="placeCard">
+
+                Connaught Place
+
+            </div>
+
+            <div class="placeCard">
+
+                Majnu Ka Tila
+
+            </div>
+
+            <div class="placeCard">
+
+                Keshav Puram
+
+            </div>
+
+            <div class="placeCard">
+
+                Anywhere in Delhi
+
+            </div>
+
+            <div class="placeCard">
+
+                Anywhere in Gurgaon
+
+            </div>
+
+        </div>
+
+        <button
+            id="plannerNext"
+            class="primaryBtn">
+
+            Continue
+
         </button>
 
     </div>
@@ -116,31 +223,37 @@
 
     <div class="card">
 
-        <h2>What are we feeling?</h2>
+        <h1>
 
-        <div class="food-grid">
+            What are we in the mood for?
 
-            <div class="food" data-food="Pizza">🍕<span>Pizza</span></div>
+        </h1>
 
-            <div class="food" data-food="Pasta">🍝<span>Pasta</span></div>
+        <div class="foodGrid">
 
-            <div class="food" data-food="Dosa">🥞<span>Dosa</span></div>
+            <div class="foodCard">🍕<span>Pizza</span></div>
 
-            <div class="food" data-food="Sushi">🍣<span>Sushi</span></div>
+            <div class="foodCard">🍝<span>Pasta</span></div>
 
-            <div class="food" data-food="Tacos">🌮<span>Tacos</span></div>
+            <div class="foodCard">🍛<span>Biryani</span></div>
 
-            <div class="food" data-food="Ramen">🍜<span>Ramen</span></div>
+            <div class="foodCard">☕<span>Coffee</span></div>
 
-            <div class="food" data-food="Coffee">☕<span>Coffee</span></div>
+            <div class="foodCard">🥞<span>Pancakes</span></div>
 
-            <div class="food" data-food="Biryani">🍛<span>Biryani</span></div>
+            <div class="foodCard">🍣<span>Sushi</span></div>
+
+            <div class="foodCard">🌮<span>Tacos</span></div>
+
+            <div class="foodCard">🍜<span>Ramen</span></div>
 
         </div>
 
-        <button id="foodBtn">
+        <button
+            id="foodNext"
+            class="primaryBtn">
 
-            Pick This ❤️
+            Finish
 
         </button>
 
@@ -152,17 +265,65 @@
 
 <section id="final" class="screen">
 
-    <div class="card">
+    <div class="card finalCard">
 
-        <div id="meme">
+        <div class="check">
 
-            🎉🥳🎉
+            ✓
 
         </div>
 
-        <h2>Glad you didn't say no ❤️</h2>
+        <h1>
 
-        <p id="summary"></p>
+            Date Confirmed
+
+        </h1>
+
+        <div class="summary">
+
+            <p>
+
+                📅
+                <span id="summaryDate"></span>
+
+            </p>
+
+            <p>
+
+                🕒
+                <span id="summaryTime"></span>
+
+            </p>
+
+            <p>
+
+                📍
+                <span id="summaryPlace"></span>
+
+            </p>
+
+            <p>
+
+                🍽️
+                <span id="summaryFood"></span>
+
+            </p>
+
+        </div>
+
+       <div class="finalMessage">
+
+    <p>
+        Looking forward to spending some time together. 😊
+    </p>
+
+</div>
+
+        <p class="ending">
+
+            Looking forward to it. 😊
+
+        </p>
 
     </div>
 

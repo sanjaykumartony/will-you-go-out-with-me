@@ -146,7 +146,7 @@ noBtn.onclick = ()=>{
 yesBtn.onclick = () => {
 
     confetti({
-        particleCount: 220,
+        particleCount: 80,
         spread: 90,
         origin: { y: 0.6 }
     });
@@ -308,7 +308,7 @@ foodNext.onclick = () => {
 
     // 🎉 Show the result immediately
     confetti({
-        particleCount: 350,
+        particleCount: 120,
         spread: 140
     });
 

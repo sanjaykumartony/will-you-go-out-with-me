@@ -167,43 +167,35 @@
 
         <label class="placeTitle">
 
-            Pick a place
+    Choose a place
 
-        </label>
+</label>
 
-        <div class="places">
+<select id="placeSelect" class="placeSelect">
 
-            <div class="placeCard">
+    <option value="">-- Select a place --</option>
 
-                Connaught Place
+    <option>Connaught Place</option>
 
-            </div>
+    <option>Majnu Ka Tila</option>
 
-            <div class="placeCard">
+    <option>Near Keshav Puram</option>
 
-                Majnu Ka Tila
+    <option>Anywhere in Delhi</option>
 
-            </div>
+    <option>Anywhere in Gurgaon</option>
 
-            <div class="placeCard">
+    <option value="suggest">
+        You suggest 😊
+    </option>
 
-                Keshav Puram
+</select>
 
-            </div>
-
-            <div class="placeCard">
-
-                Anywhere in Delhi
-
-            </div>
-
-            <div class="placeCard">
-
-                Anywhere in Gurgaon
-
-            </div>
-
-        </div>
+<input
+    type="text"
+    id="customPlace"
+    class="customPlace"
+    placeholder="Type your suggestion here">
 
         <button
             id="plannerNext"

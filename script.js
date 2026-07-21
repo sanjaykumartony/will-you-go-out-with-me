@@ -165,26 +165,27 @@ yesBtn.onclick = ()=>{
 // Places
 // ----------------------
 
-const placeCards =
-document.querySelectorAll(".placeCard");
+const placeSelect =
+document.getElementById("placeSelect");
 
-placeCards.forEach(card=>{
+const customPlace =
+document.getElementById("customPlace");
 
-    card.onclick=()=>{
+placeSelect.onchange = ()=>{
 
-        placeCards.forEach(c=>{
+    if(placeSelect.value==="suggest"){
 
-            c.classList.remove("selected");
+        customPlace.style.display="block";
 
-        });
+    }else{
 
-        card.classList.add("selected");
+        customPlace.style.display="none";
 
-        selectedPlace = card.innerText;
+        selectedPlace=placeSelect.value;
 
-    };
+    }
 
-});
+};
 
 // ----------------------
 // Planner
@@ -206,13 +207,27 @@ plannerNext.onclick=()=>{
 
     }
 
-    if(selectedPlace===""){
+    if(placeSelect.value===""){
 
-        alert("Please choose a place.");
+    alert("Please choose a place.");
+
+    return;
+
+}
+
+if(placeSelect.value==="suggest"){
+
+    if(customPlace.value.trim()===""){
+
+        alert("Please type your suggestion.");
 
         return;
 
     }
+
+    selectedPlace=customPlace.value.trim();
+
+}
 
     showScreen(food);
 

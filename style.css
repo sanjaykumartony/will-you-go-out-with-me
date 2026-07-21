@@ -653,3 +653,47 @@ button:hover{
     font-size:1.05rem;
     line-height:1.6;
 }
+
+.placeSelect{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    outline:none;
+
+    margin-bottom:15px;
+
+    background:white;
+
+    color:#222;
+
+}
+
+.customPlace{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    outline:none;
+
+    display:none;
+
+    font-size:16px;
+
+    background:white;
+
+    color:#222;
+
+}

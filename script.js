@@ -240,6 +240,9 @@ if(placeSelect.value==="suggest"){
 const foodCards =
 document.querySelectorAll(".foodCard");
 
+const customFood =
+document.getElementById("customFood");
+
 foodCards.forEach(card=>{
 
     card.onclick=()=>{
@@ -252,8 +255,21 @@ foodCards.forEach(card=>{
 
         card.classList.add("selected");
 
-        selectedFood =
-        card.innerText.replace(/\n/g," ");
+        const value =
+        card.innerText.replace(/\n/g," ").trim();
+
+        if(value.includes("You choose")){
+
+            customFood.style.display="block";
+            selectedFood="";
+
+        }else{
+
+            customFood.style.display="none";
+
+            selectedFood=value;
+
+        }
 
     };
 
@@ -265,10 +281,28 @@ foodCards.forEach(card=>{
 
 foodNext.onclick = () => {
 
-    if (selectedFood === "") {
+    if(selectedFood===""){
+
+    if(customFood.style.display==="block"){
+
+        if(customFood.value.trim()===""){
+
+            alert("Tell me what you're craving 😊");
+            return;
+
+        }
+
+        selectedFood =
+        customFood.value.trim();
+
+    }else{
+
         alert("Pick something to eat 😄");
         return;
+
     }
+
+}
 
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;

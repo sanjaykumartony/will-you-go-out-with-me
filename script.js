@@ -310,3 +310,118 @@ document
 
 };
 
+/* =====================================================
+   FINISH
+===================================================== */
+
+// Replace with YOUR Apps Script URL
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzqW0kJwSTBNmNFHzLNSHoRldp7A7tz2fej4nLbLYVzesg0T8Q0wXeAXhwXWjve9N6tNw/exec";
+
+document
+.getElementById("finishBtn")
+.onclick = async ()=>{
+
+    if(selectedFood===""){
+
+        if(customFood.style.display==="block"){
+
+            if(customFood.value.trim()===""){
+
+                alert("Tell me what you'd like to eat 😊");
+
+                return;
+
+            }
+
+            selectedFood = customFood.value.trim();
+
+        }
+
+        else{
+
+            alert("Please choose a food 😊");
+
+            return;
+
+        }
+
+    }
+
+    const selectedPlace =
+        place.value==="You suggest..."
+        ? customPlace.value.trim()
+        : place.value;
+
+    const selectedDate =
+        document.getElementById("date").value;
+
+    const selectedTime =
+        document.getElementById("time").value;
+
+    const summary =
+        document.getElementById("summary");
+
+    summary.innerHTML = `
+
+        <p>📅 <strong>Date:</strong> ${selectedDate}</p>
+
+        <p>🕒 <strong>Time:</strong> ${selectedTime}</p>
+
+        <p>📍 <strong>Place:</strong> ${selectedPlace}</p>
+
+        <p>🍽️ <strong>Food:</strong> ${selectedFood}</p>
+
+    `;
+
+    confetti({
+
+        particleCount:180,
+
+        spread:120,
+
+        origin:{y:.6}
+
+    });
+
+    try{
+
+        await fetch(SCRIPT_URL,{
+
+            method:"POST",
+
+            mode:"no-cors",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+
+                date:selectedDate,
+
+                time:selectedTime,
+
+                place:selectedPlace,
+
+                food:selectedFood
+
+            })
+
+        });
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+    showScreen(final);
+
+};
+
+/* =====================================================
+   END
+===================================================== */

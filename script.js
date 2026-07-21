@@ -151,9 +151,7 @@ yesBtn.onclick = () => {
         origin: { y: 0.6 }
     });
 
-    setTimeout(() => {
-        showScreen(planner);
-    }, 200);
+    showScreen(planner);
 
 };
 

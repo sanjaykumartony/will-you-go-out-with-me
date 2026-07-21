@@ -1,175 +1,140 @@
-// ----------------------
-// Elements
-// ----------------------
+// ==============================
+// Screens
+// ==============================
 
 const screens = document.querySelectorAll(".screen");
 
-const loading = document.getElementById("loading");
-const welcome = document.getElementById("welcome");
-const intro = document.getElementById("intro");
-const question = document.getElementById("question");
-const planner = document.getElementById("planner");
-const food = document.getElementById("food");
-const finalScreen = document.getElementById("final");
-
-const progressBar = document.getElementById("progressBar");
-const loadingPercent = document.getElementById("loadingPercent");
-
-const openBtn = document.getElementById("openBtn");
-
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const message = document.getElementById("message");
-
-const plannerNext = document.getElementById("plannerNext");
-const foodNext = document.getElementById("foodNext");
-
-// ----------------------
-// Summary
-// ----------------------
-
-const summaryDate = document.getElementById("summaryDate");
-const summaryTime = document.getElementById("summaryTime");
-const summaryPlace = document.getElementById("summaryPlace");
-const summaryFood = document.getElementById("summaryFood");
-
-// ----------------------
-// Data
-// ----------------------
-
-let selectedPlace = "";
-let selectedFood = "";
-
-const noMessages = [
-    "Really sure?",
-    "Think again 😄",
-    "I'll let you choose the place.",
-    "Free food though 👀",
-    "You won't even try?",
-    "Still no?",
-    "Come on...",
-    "This button seems lonely.",
-    "I'm running out of ideas 😂",
-    "Last chance!",
-    "Okay... maybe?",
-    "You know the green button is nicer 😌"
-];
-
-let noIndex = 0;
-let yesScale = 1;
-
-// ----------------------
-// Helper
-// ----------------------
+const loadingScreen = document.getElementById("loadingScreen");
+const inviteScreen = document.getElementById("inviteScreen");
+const introScreen = document.getElementById("introScreen");
+const proposalScreen = document.getElementById("proposalScreen");
+const plannerScreen = document.getElementById("plannerScreen");
+const foodScreen = document.getElementById("foodScreen");
+const finalScreen = document.getElementById("finalScreen");
 
 function showScreen(screen){
 
-    screens.forEach(s=>{
-        s.classList.remove("active");
-    });
+    screens.forEach(s=>s.classList.remove("active"));
 
     screen.classList.add("active");
 
 }
 
-// ----------------------
+
+
+// ==============================
 // Loading
-// ----------------------
+// ==============================
+
+const progressBar = document.getElementById("progressBar");
 
 let progress = 0;
 
-const loadingInterval = setInterval(()=>{
+const loader = setInterval(()=>{
 
-    progress++;
+    progress += 2;
 
     progressBar.style.width = progress + "%";
-    loadingPercent.innerText = progress + "%";
 
-    if(progress >= 100){
+    if(progress>=100){
 
-        clearInterval(loadingInterval);
+        clearInterval(loader);
 
-        setTimeout(()=>{
-
-            showScreen(welcome);
-
-        },400);
+        showScreen(inviteScreen);
 
     }
 
-},20);
+},30);
 
-// ----------------------
-// Welcome
-// ----------------------
 
-openBtn.onclick = ()=>{
 
-    showScreen(intro);
+// ==============================
+// Buttons
+// ==============================
 
-};
+document.getElementById("openInvite").onclick=()=>{
 
-// ----------------------
-// Intro
-// ----------------------
-
-intro.onclick = ()=>{
-
-    showScreen(question);
+    showScreen(introScreen);
 
 };
 
-// ----------------------
-// NO BUTTON
-// ----------------------
+document.getElementById("continueBtn").onclick=()=>{
 
-noBtn.onclick = ()=>{
-
-    message.innerText = noMessages[noIndex % noMessages.length];
-
-    noIndex++;
-
-    yesScale += 0.15;
-
-    yesBtn.style.transform =
-        `scale(${yesScale})`;
-
-    noBtn.style.transform =
-        `scale(${Math.max(0.45,1-noIndex*0.05)})`;
+    showScreen(proposalScreen);
 
 };
 
-// ----------------------
-// YES BUTTON
-// ----------------------
 
-yesBtn.onclick = () => {
 
-    showScreen(planner);
+// ==============================
+// Funny NO
+// ==============================
 
-    setTimeout(() => {
-        confetti({
-            particleCount: 80,
-            spread: 90,
-            origin: { y: 0.6 }
-        });
-    }, 0);
+const noBtn=document.getElementById("noBtn");
+
+const msg=document.getElementById("message");
+
+const funnyReplies=[
+
+    "Please? 🥺",
+    "Think again 😄",
+    "Wrong button 😂",
+    "I'm not accepting that 😌",
+    "Try the green one ❤️"
+
+];
+
+let replyIndex=0;
+
+noBtn.onclick=()=>{
+
+    msg.innerText=funnyReplies[replyIndex];
+
+    replyIndex=(replyIndex+1)%funnyReplies.length;
+
+    const x=Math.random()*180-90;
+
+    const y=Math.random()*180-90;
+
+    noBtn.style.transform=`translate(${x}px,${y}px)`;
 
 };
 
-// ----------------------
-// Places
-// ----------------------
 
-const placeSelect =
-document.getElementById("placeSelect");
 
-const customPlace =
-document.getElementById("customPlace");
+// ==============================
+// YES
+// ==============================
 
-placeSelect.onchange = ()=>{
+document.getElementById("yesBtn").onclick=()=>{
 
-    if(placeSelect.value==="suggest"){
+    confetti({
+
+        particleCount:80,
+
+        spread:90,
+
+        origin:{y:.6}
+
+    });
+
+    showScreen(plannerScreen);
+
+};
+
+
+
+// ==============================
+// Planner
+// ==============================
+
+const place=document.getElementById("place");
+
+const customPlace=document.getElementById("customPlace");
+
+place.onchange=()=>{
+
+    if(place.value==="You choose..."){
 
         customPlace.style.display="block";
 
@@ -177,89 +142,66 @@ placeSelect.onchange = ()=>{
 
         customPlace.style.display="none";
 
-        selectedPlace=placeSelect.value;
-
     }
 
 };
 
-// ----------------------
-// Planner
-// ----------------------
 
-plannerNext.onclick=()=>{
 
-    const date =
-    document.getElementById("date").value;
-
-    const time =
-    document.getElementById("time").value;
-
-    if(date==="" || time===""){
-
-        alert("Please select date and time.");
-
-        return;
-
-    }
-
-    if(placeSelect.value===""){
-
-    alert("Please choose a place.");
-
-    return;
-
-}
-
-if(placeSelect.value==="suggest"){
-
-    if(customPlace.value.trim()===""){
-
-        alert("Please type your suggestion.");
-
-        return;
-
-    }
-
-    selectedPlace=customPlace.value.trim();
-
-}
-
-    showScreen(food);
-
-};
-
-// ----------------------
+// ==============================
 // Food
-// ----------------------
+// ==============================
 
-const foodCards =
-document.querySelectorAll(".foodCard");
+const foods=[
 
-const customFood =
-document.getElementById("customFood");
+    ["🍕","Pizza"],
+    ["🍝","Pasta"],
+    ["🍛","Biryani"],
+    ["☕","Coffee"],
+    ["🍣","Sushi"],
+    ["🥞","Pancakes"],
+    ["🍜","Ramen"],
+    ["✨","You choose..."]
 
-foodCards.forEach(card=>{
+];
+
+const foodGrid=document.getElementById("foodGrid");
+
+foods.forEach(f=>{
+
+    const div=document.createElement("div");
+
+    div.className="foodCard";
+
+    div.innerHTML=`${f[0]}<span>${f[1]}</span>`;
+
+    foodGrid.appendChild(div);
+
+});
+
+const customFood=document.getElementById("customFood");
+
+let selectedFood="";
+
+document.querySelectorAll(".foodCard").forEach(card=>{
 
     card.onclick=()=>{
 
-        foodCards.forEach(c=>{
-
-            c.classList.remove("selected");
-
-        });
+        document.querySelectorAll(".foodCard").forEach(c=>c.classList.remove("selected"));
 
         card.classList.add("selected");
 
-        const value =
-        card.innerText.replace(/\n/g," ").trim();
+        const value=card.innerText.trim();
 
         if(value.includes("You choose")){
 
             customFood.style.display="block";
+
             selectedFood="";
 
-        }else{
+        }
+
+        else{
 
             customFood.style.display="none";
 
@@ -271,67 +213,106 @@ foodCards.forEach(card=>{
 
 });
 
-// ----------------------
-// Finish
-// ----------------------
 
-foodNext.onclick = () => {
 
-    if(selectedFood===""){
+// ==============================
+// Planner Next
+// ==============================
 
-    if(customFood.style.display==="block"){
+document.getElementById("plannerNext").onclick=()=>{
 
-        if(customFood.value.trim()===""){
+    if(date.value===""){
 
-            alert("Tell me what you're craving 😊");
-            return;
+        alert("Choose a date 😊");
 
-        }
-
-        selectedFood =
-        customFood.value.trim();
-
-    }else{
-
-        alert("Pick something to eat 😄");
         return;
 
     }
 
-}
+    if(time.value===""){
 
-    const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
+        alert("Choose a time 😊");
 
-    summaryDate.innerText = date;
-    summaryTime.innerText = time;
-    summaryPlace.innerText = selectedPlace;
-    summaryFood.innerText = selectedFood;
+        return;
 
-    // 🎉 Show the result immediately
+    }
+
+    if(place.value===""){
+
+        alert("Choose a place 😊");
+
+        return;
+
+    }
+
+    if(place.value==="You choose..." && customPlace.value.trim()===""){
+
+        alert("Tell me the place 😊");
+
+        return;
+
+    }
+
+    showScreen(foodScreen);
+
+};
+
+
+
+// ==============================
+// Finish
+// ==============================
+
+document.getElementById("foodNext").onclick=()=>{
+
+    if(selectedFood===""){
+
+        if(customFood.style.display==="block"){
+
+            if(customFood.value.trim()===""){
+
+                alert("Tell me what you're craving 😊");
+
+                return;
+
+            }
+
+            selectedFood=customFood.value.trim();
+
+        }
+
+        else{
+
+            alert("Choose something to eat 😊");
+
+            return;
+
+        }
+
+    }
+
+    const summary=document.getElementById("summary");
+
+    summary.innerHTML=`
+
+        <p>📅 ${date.value}</p>
+
+        <p>🕒 ${time.value}</p>
+
+        <p>📍 ${place.value==="You choose..."?customPlace.value:place.value}</p>
+
+        <p>🍽 ${selectedFood}</p>
+
+    `;
+
     confetti({
-        particleCount: 120,
-        spread: 140
+
+        particleCount:150,
+
+        spread:120
+
     });
 
     showScreen(finalScreen);
-
-    // 📤 Send data to Google Sheets in the background
-    fetch(
-        "https://script.google.com/macros/s/AKfycbzqW0kJwSTBNmNFHzLNSHoRldp7A7tz2fej4nLbLYVzesg0T8Q0wXeAXhwXWjve9N6tNw/exec",
-        {
-            method: "POST",
-            mode: "no-cors",
-            headers: {
-                "Content-Type": "text/plain;charset=utf-8"
-            },
-            body: JSON.stringify({
-                date,
-                time,
-                place: selectedPlace,
-                food: selectedFood
-            })
-        }
-    ).catch(console.error);
 
 };

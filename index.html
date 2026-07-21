@@ -1,337 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Open Invitation</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>For Bharti ❤️</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
 <body>
 
-<!-- Animated Background -->
-<div class="background">
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
-</div>
+    <!-- Background -->
 
-<!-- ================= LOADING ================= -->
+    <div class="background">
 
-<section id="loading" class="screen active">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
 
-    <div class="card">
+    </div>
 
-        <h2>Loading something special...</h2>
 
-        <div class="progress">
 
-            <div id="progressBar"></div>
+    <!-- Loading -->
+
+    <section
+        class="screen active"
+        id="loadingScreen">
+
+        <div class="card">
+
+            <h1>Preparing something special...</h1>
+
+            <div class="progress">
+
+                <div id="progressBar"></div>
+
+            </div>
+
+            <p>Please wait...</p>
 
         </div>
 
-        <p id="loadingPercent">0%</p>
+    </section>
 
-    </div>
 
-</section>
 
-<!-- ================= INVITATION ================= -->
+    <!-- Invitation -->
 
-<section id="welcome" class="screen">
+    <section
+        class="screen"
+        id="inviteScreen">
 
-    <div class="card">
+        <div class="card">
 
-        <p class="smallText">
-            You've been invited to something...
-        </p>
+            <h1>You've been invited to something...</h1>
 
-        <button id="openBtn" class="primaryBtn">
+            <p class="subtitle">
 
-            Open Invitation
+                I made a tiny surprise 😊
 
-        </button>
+            </p>
 
-    </div>
+            <button
+                class="primaryBtn"
+                id="openInvite">
 
-</section>
-
-<!-- ================= INTRO ================= -->
-
-<section id="intro" class="screen">
-
-    <div class="card">
-
-        <h1>
-
-            Hey Bharti,
-
-        </h1>
-
-        <p class="subtitle">
-
-            I made something for you.
-
-        </p>
-
-        <p class="hint">
-
-            Tap anywhere to continue
-
-        </p>
-
-    </div>
-
-</section>
-
-<!-- ================= QUESTION ================= -->
-
-<section id="question" class="screen">
-
-    <div class="card">
-
-        <h1>
-
-            Will you go on a date with me?
-
-        </h1>
-
-        <div class="buttonGroup">
-
-            <button id="yesBtn" class="yesButton">
-
-                Yes
-
-            </button>
-
-            <button id="noBtn" class="noButton">
-
-                No
+                Open Invitation
 
             </button>
 
         </div>
 
-        <p id="message"></p>
+    </section>
 
-    </div>
 
-</section>
 
-<!-- ================= PLANNER ================= -->
+    <!-- Intro -->
 
-<section id="planner" class="screen">
+    <section
+        class="screen"
+        id="introScreen">
 
-    <div class="card plannerCard">
+        <div class="card">
 
-        <h1>
+            <h1>Hey Bharti 👋</h1>
 
-            Let's plan it.
+            <p class="smallText">
 
-        </h1>
+                I wanted to ask you something...
 
-        <div class="field">
+            </p>
 
-            <label>
+            <button
+                class="primaryBtn"
+                id="continueBtn">
 
-                Date
+                Continue
 
-            </label>
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Proposal -->
+
+    <section
+        class="screen"
+        id="proposalScreen">
+
+        <div class="card">
+
+            <h1>
+
+                Will you go out with me?
+
+            </h1>
+
+            <div class="buttonGroup">
+
+                <button
+                    class="yesButton"
+                    id="yesBtn">
+
+                    Yes ❤️
+
+                </button>
+
+                <button
+                    class="noButton"
+                    id="noBtn">
+
+                    No 🙈
+
+                </button>
+
+            </div>
+
+            <p id="message"></p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Planner -->
+
+    <section
+        class="screen"
+        id="plannerScreen">
+
+        <div class="card plannerCard">
+
+            <h2>Let's plan it ✨</h2>
+
+            <div class="field">
+
+                <label>Date</label>
+
+                <input
+                    type="date"
+                    id="date">
+
+            </div>
+
+            <div class="field">
+
+                <label>Time</label>
+
+                <input
+                    type="time"
+                    id="time">
+
+            </div>
+
+            <div class="field">
+
+                <label>Place</label>
+
+                <select
+                    id="place"
+                    class="placeSelect">
+
+                    <option value="">Choose one</option>
+
+                    <option>Connaught Place</option>
+
+                    <option>Majnu Ka Tila</option>
+
+                    <option>Near Keshav Puram</option>
+
+                    <option>Anywhere in Delhi</option>
+
+                    <option>Anywhere in Gurgaon</option>
+
+                    <option>You choose...</option>
+
+                </select>
+
+                <input
+                    type="text"
+                    id="customPlace"
+                    class="customPlace"
+                    placeholder="Where would you like to go?">
+
+            </div>
+
+            <button
+                class="primaryBtn"
+                id="plannerNext">
+
+                Next
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Food -->
+
+    <section
+        class="screen"
+        id="foodScreen">
+
+        <div class="card">
+
+            <h2>What should we eat?</h2>
+
+            <div
+                class="foodGrid"
+                id="foodGrid">
+
+            </div>
 
             <input
-                id="date"
-                type="date">
+                type="text"
+                id="customFood"
+                class="customFood"
+                placeholder="What are you craving?">
+
+            <button
+                class="primaryBtn"
+                id="foodNext">
+
+                Finish
+
+            </button>
 
         </div>
 
-        <div class="field">
+    </section>
 
-            <label>
 
-                Time
 
-            </label>
+    <!-- Final -->
 
-            <input
-                id="time"
-                type="time">
+    <section
+        class="screen"
+        id="finalScreen">
 
-        </div>
+        <div class="card">
 
-        <label class="placeTitle">
+            <div class="check">
 
-    Choose a place
+                ✓
 
-</label>
+            </div>
 
-<select id="placeSelect" class="placeSelect">
+            <h2>It's a date! ❤️</h2>
 
-    <option value="">-- Select a place --</option>
+            <div
+                class="summary"
+                id="summary">
 
-    <option>Connaught Place</option>
+            </div>
 
-    <option>Majnu Ka Tila</option>
+            <div class="finalMessage">
 
-    <option>Near Keshav Puram</option>
+                Looking forward to it 😊
 
-    <option>Anywhere in Delhi</option>
-
-    <option>Anywhere in Gurgaon</option>
-
-    <option value="suggest">
-        You suggest 😊
-    </option>
-
-</select>
-
-<input
-    type="text"
-    id="customPlace"
-    class="customPlace"
-    placeholder="Type your suggestion here">
-
-        <button
-            id="plannerNext"
-            class="primaryBtn">
-
-            Continue
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- ================= FOOD ================= -->
-
-<section id="food" class="screen">
-
-    <div class="card">
-
-        <h1>
-
-            What are we in the mood for?
-
-        </h1>
-
-        <div class="foodGrid">
-
-            <div class="foodCard">🍕<span>Pizza</span></div>
-
-            <div class="foodCard">🍝<span>Pasta</span></div>
-
-            <div class="foodCard">🍛<span>Biryani</span></div>
-
-            <div class="foodCard">☕<span>Coffee</span></div>
-
-            <div class="foodCard">🥞<span>Pancakes</span></div>
-
-            <div class="foodCard">🍣<span>Sushi</span></div>
-
-            <div class="foodCard">🌮<span>Tacos</span></div>
-
-            <div class="foodCard">🍜<span>Ramen</span></div>
-
-            <div class="foodCard">✨<span>You choose...</span></div>
+            </div>
 
         </div>
 
-        <input
-    type="text"
-    id="customFood"
-    class="customFood"
-    placeholder="What are you craving?">
+    </section>
 
-        <button
-            id="foodNext"
-            class="primaryBtn">
 
-            Finish
 
-        </button>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-    </div>
-
-</section>
-
-<!-- ================= FINAL ================= -->
-
-<section id="final" class="screen">
-
-    <div class="card finalCard">
-
-        <div class="check">
-
-            ✓
-
-        </div>
-
-        <h1>
-
-            Date Confirmed
-
-        </h1>
-
-        <div class="summary">
-
-            <p>
-
-                📅
-                <span id="summaryDate"></span>
-
-            </p>
-
-            <p>
-
-                🕒
-                <span id="summaryTime"></span>
-
-            </p>
-
-            <p>
-
-                📍
-                <span id="summaryPlace"></span>
-
-            </p>
-
-            <p>
-
-                🍽️
-                <span id="summaryFood"></span>
-
-            </p>
-
-        </div>
-
-       <div class="finalMessage">
-
-    <p>
-        Looking forward to spending some time together. 😊
-    </p>
-
-</div>
-
-        <p class="ending">
-
-            Looking forward to it. 😊
-
-        </p>
-
-    </div>
-
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
